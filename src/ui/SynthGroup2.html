@@ -1,0 +1,154 @@
+<div class="controls controls-{{groupData.groupStr}}">
+  <div style="float:left">
+    <div class="control-cell" hidden={{$auth}}>
+      <input class="restartOnChange" type="range" min="1" max="200" bind:value=groupData.noteCount step="1"/>
+      <br/>
+      note count: {{groupData.noteCount}}
+    </div>
+    <div class="control-cell" hidden={{!$auth}}>
+      <input class="groupLabel" bind:value=groupData.label/>
+    </div>
+    <div class="control-cell">
+      <select bind:value=groupData.instrument>
+        <option>Synth</option>
+        <option hidden={{groupData.instrument !== "1st Violins" && ($groupA.instrument === "1st Violins" || $groupB.instrument === "1st Violins" || $groupC.instrument === "1st Violins")}}>1st Violins</option>
+        <option hidden={{groupData.instrument !== "2nd Violins" && ($groupA.instrument === "2nd Violins" || $groupB.instrument === "2nd Violins" || $groupC.instrument === "2nd Violins")}}>2nd Violins</option>
+        <option hidden={{groupData.instrument !== "Alto Flute" && ($groupA.instrument === "Alto Flute" || $groupB.instrument === "Alto Flute" || $groupC.instrument === "Alto Flute")}}>Alto Flute</option>
+        <option hidden={{groupData.instrument !== "Bass Clarinet" && ($groupA.instrument === "Bass Clarinet" || $groupB.instrument === "Bass Clarinet" || $groupC.instrument === "Bass Clarinet")}}>Bass Clarinet</option>
+        <option hidden={{groupData.instrument !== "Bass Trombone" && ($groupA.instrument === "Bass Trombone" || $groupB.instrument === "Bass Trombone" || $groupC.instrument === "Bass Trombone")}}>Bass Trombone</option>
+        <option hidden={{groupData.instrument !== "Basses" && ($groupA.instrument === "Basses" || $groupB.instrument === "Basses" || $groupC.instrument === "Basses")}}>Basses</option>
+        <option hidden={{groupData.instrument !== "Bassoon" && ($groupA.instrument === "Bassoon" || $groupB.instrument === "Bassoon" || $groupC.instrument === "Bassoon")}}>Bassoon</option>
+        <option hidden={{groupData.instrument !== "Bassoons" && ($groupA.instrument === "Bassoons" || $groupB.instrument === "Bassoons" || $groupC.instrument === "Bassoons")}}>Bassoons</option>
+        <option hidden={{groupData.instrument !== "Celli" && ($groupA.instrument === "Celli" || $groupB.instrument === "Celli" || $groupC.instrument === "Celli")}}>Celli</option>
+        <option hidden={{groupData.instrument !== "Cello" && ($groupA.instrument === "Cello" || $groupB.instrument === "Cello" || $groupC.instrument === "Cello")}}>Cello</option>
+        <option hidden={{groupData.instrument !== "Female Chorus" && ($groupA.instrument === "Female Chorus" || $groupB.instrument === "Female Chorus" || $groupC.instrument === "Female Chorus")}}>Female Chorus</option>
+        <option hidden={{groupData.instrument !== "Male Chorus" && ($groupA.instrument === "Male Chorus" || $groupB.instrument === "Male Chorus" || $groupC.instrument === "Male Chorus")}}>Male Chorus</option>
+        <option hidden={{groupData.instrument !== "Clarinet" && ($groupA.instrument === "Clarinet" || $groupB.instrument === "Clarinet" || $groupC.instrument === "Clarinet")}}>Clarinet</option>
+        <option hidden={{groupData.instrument !== "Clarinets" && ($groupA.instrument === "Clarinets" || $groupB.instrument === "Clarinets" || $groupC.instrument === "Clarinets")}}>Clarinets</option>
+        <option hidden={{groupData.instrument !== "Contrabassoon" && ($groupA.instrument === "Contrabassoon" || $groupB.instrument === "Contrabassoon" || $groupC.instrument === "Contrabassoon")}}>Contrabassoon</option>
+        <option hidden={{groupData.instrument !== "Cor Anglais" && ($groupA.instrument === "Cor Anglais" || $groupB.instrument === "Cor Anglais" || $groupC.instrument === "Cor Anglais")}}>Cor Anglais</option>
+        <option hidden={{groupData.instrument !== "Flute" && ($groupA.instrument === "Flute" || $groupB.instrument === "Flute" || $groupC.instrument === "Flute")}}>Flute</option>
+        <option hidden={{groupData.instrument !== "Flutes" && ($groupA.instrument === "Flutes" || $groupB.instrument === "Flutes" || $groupC.instrument === "Flutes")}}>Flutes</option>
+        <option hidden={{groupData.instrument !== "Grand Piano" && ($groupA.instrument === "Grand Piano" || $groupB.instrument === "Grand Piano" || $groupC.instrument === "Grand Piano")}}>Grand Piano</option>
+        <option hidden={{groupData.instrument !== "Harp" && ($groupA.instrument === "Harp" || $groupB.instrument === "Harp" || $groupC.instrument === "Harp")}}>Harp</option>
+        <option hidden={{groupData.instrument !== "Horn" && ($groupA.instrument === "Horn" || $groupB.instrument === "Horn" || $groupC.instrument === "Horn")}}>Horn</option>
+        <option hidden={{groupData.instrument !== "Horns" && ($groupA.instrument === "Horns" || $groupB.instrument === "Horns" || $groupC.instrument === "Horns")}}>Horns</option>
+        <option hidden={{groupData.instrument !== "Oboe" && ($groupA.instrument === "Oboe" || $groupB.instrument === "Oboe" || $groupC.instrument === "Oboe")}}>Oboe</option>
+        <option hidden={{groupData.instrument !== "Oboes" && ($groupA.instrument === "Oboes" || $groupB.instrument === "Oboes" || $groupC.instrument === "Oboes")}}>Oboes</option>
+        <option hidden={{groupData.instrument !== "Chimes" && ($groupA.instrument === "Chimes" || $groupB.instrument === "Chimes" || $groupC.instrument === "Chimes")}}>Chimes</option>
+        <option hidden={{groupData.instrument !== "Glockenspiel" && ($groupA.instrument === "Glockenspiel" || $groupB.instrument === "Glockenspiel" || $groupC.instrument === "Glockenspiel")}}>Glockenspiel</option>
+        <option hidden={{groupData.instrument !== "Xylophone" && ($groupA.instrument === "Xylophone" || $groupB.instrument === "Xylophone" || $groupC.instrument === "Xylophone")}}>Xylophone</option>
+        <option hidden={{groupData.instrument !== "Piccolo" && ($groupA.instrument === "Piccolo" || $groupB.instrument === "Piccolo" || $groupC.instrument === "Piccolo")}}>Piccolo</option>
+        <option hidden={{groupData.instrument !== "Tenor Trombone" && ($groupA.instrument === "Tenor Trombone" || $groupB.instrument === "Tenor Trombone" || $groupC.instrument === "Tenor Trombone")}}>Tenor Trombone</option>
+        <option hidden={{groupData.instrument !== "Trombones" && ($groupA.instrument === "Trombones" || $groupB.instrument === "Trombones" || $groupC.instrument === "Trombones")}}>Trombones</option>
+        <option hidden={{groupData.instrument !== "Trumpet" && ($groupA.instrument === "Trumpet" || $groupB.instrument === "Trumpet" || $groupC.instrument === "Trumpet")}}>Trumpet</option>
+        <option hidden={{groupData.instrument !== "Trumpets" && ($groupA.instrument === "Trumpets" || $groupB.instrument === "Trumpets" || $groupC.instrument === "Trumpets")}}>Trumpets</option>
+        <option hidden={{groupData.instrument !== "Tuba" && ($groupA.instrument === "Tuba" || $groupB.instrument === "Tuba" || $groupC.instrument === "Tuba")}}>Tuba</option>
+        <option hidden={{groupData.instrument !== "Violas" && ($groupA.instrument === "Violas" || $groupB.instrument === "Violas" || $groupC.instrument === "Violas")}}>Violas</option>
+        <option hidden={{groupData.instrument !== "Violin" && ($groupA.instrument === "Violin" || $groupB.instrument === "Violin" || $groupC.instrument === "Violin")}}>Violin</option>
+      </select>&nbsp;/&nbsp;<select bind:value=groupData.octave id="octave">
+        <option value="1">Octave 1</option>
+        <option value="2">Octave 2</option>
+        <option value="3">Octave 3</option>
+        <option value="4">Octave 4</option>
+        <option value="5">Octave 5</option>
+        <option value="6">Octave 6</option>
+        <option value="7">Octave 7</option>
+        <option value="8">Octave 8</option>
+      </select>
+    </div>
+    <div class="control-cell">
+      <input type="range" min="-100" max="50" bind:value=groupData.volume step="1"/>
+      <br/>
+      volume: {{groupData.volume}}
+    </div>
+  </div>
+  <div hidden='{{!$auth || $goalDataHidden}}' style="float:left;border:1px solid #2d2c2d;">
+      {{#each $goalList as goal}}
+        <input type="radio" id="goal{{goal.id}}{{groupData.groupStr}}" name="{{goal.id}}" bind:group=goal.group value="{{groupData.groupStr}}"/>
+        <label class=goal{{goal.id}}Label for=goal{{goal.id}}{{groupData.groupStr}}>{{goal.name}}</label><br/><!-- ({{goal.visitors || '...'}}) -->
+      {{/each}}
+  </div>
+  <table hidden='{{groupData.instrument !== "Synth"}}'>
+    <tr><td colspan=2 style="text-align: center">Synth controls (experimental!)</td></tr>
+    <tr><td colspan=2 style="text-align: center"><strong>oscillator controls</strong></td></tr>
+    <tr>
+      <Voice ref:voice0 bind:voiceData=groupData.voice0 group={{groupData.groupStr}} oscillatorType={{groupData.voice0.oscillatorType}} oscillatorTypePrefix={{groupData.voice0.oscillatorTypePrefix}} mute={{groupData.voice0.mute}}/>
+      <Voice ref:voice1 bind:voiceData=groupData.voice1 group={{groupData.groupStr}} oscillatorType={{groupData.voice1.oscillatorType}} oscillatorTypePrefix={{groupData.voice1.oscillatorTypePrefix}} mute={{groupData.voice1.mute}}/>
+    </tr>
+    <tr><td colspan=2 style="text-align: center"><strong>oscillator interaction</strong></td></tr>
+    <tr>
+      <td>harmonicity</td>
+      <td><input type="range" min="-12" max="24" bind:value=groupData.harmonicity step="0.1" >{{groupData.harmonicity}}</td>
+    </tr>
+    <tr>
+      <td>vibratoRate</td>
+      <td><input type="range" min="0" max="12"  bind:value=groupData.vibratoRate step="0.1" >{{groupData.vibratoRate}}</td>
+    </tr>
+    <tr>
+      <td>vibratoAmount</td>
+      <td><input type="range" min="0" max="1"  bind:value=groupData.vibratoAmount step="0.01" >{{groupData.vibratoAmount}}</td>
+    </tr>
+  </table>
+  <table hidden='{{$effectsRemoved}}' style="float:left;">
+    <tr><td colspan=2 style="text-align: center">effects (experimental!)</td></tr>
+    <tr>
+      <td>reverb roomSize</td>
+      <td><input type="range" min="0" max="1" bind:value=groupData.reverbRoomSize step="0.01" >{{groupData.reverbRoomSize}}</td>
+    </tr>
+    <tr>
+      <td>reverb wet</td>
+      <td><input type="range" min="0" max="1" bind:value=groupData.reverbWet step="0.01" >{{groupData.reverbWet}}</td>
+    </tr>
+    <tr>
+      <td>Chebyshev order</td>
+      <td><input type="range" min="1" max="100" bind:value=groupData.chebyshevOrder step="1" >{{groupData.chebyshevOrder}}</td>
+    </tr>
+    <tr>
+      <td>Chebyshev oversample</td>
+      <td>
+        <input type="radio" id="chebyshevOversampleNone" bind:group=groupData.chebyshevOversample value="none"/><label for="chebyshevOversampleNone">none</label>
+        <input type="radio" id="chebyshevOversample2x" bind:group=groupData.chebyshevOversample value="2x"/><label for="chebyshevOversample2x">2x</label>
+        <input type="radio" id="chebyshevOversample4x" bind:group=groupData.chebyshevOversample value="4x"/><label for="chebyshevOversample4x">4x</label>
+      </td>
+    </tr>
+    <tr>
+      <td>Chebyshev wet</td>
+      <td><input type="range" min="0" max="1" bind:value=groupData.chebyshevWet step="0.01" >{{groupData.chebyshevWet}}</td>
+    </tr>
+    <tr>
+      <td>bitcrusher bits</td>
+      <td><input type="range" min="1" max="8" bind:value=groupData.bitcrusherBits step="1" >{{groupData.bitcrusherBits}}</td>
+    </tr>
+    <tr>
+      <td>bitcrusher wet</td>
+      <td><input type="range" min="0" max="1" bind:value=groupData.bitcrusherWet step="0.01" >{{groupData.bitcrusherWet}}</td>
+    </tr>
+  </table>
+</div>
+<div class="notes notes-{{groupData.groupStr}}">
+    {{#each groupData.loops as loop}}
+    <div
+      class="loop {{loop.altCss}} {{loop.wrappedNote}} note{{loop.duration}} repeat{{loop.repeat}}"
+      style="
+        --display-offset:{{loop.displayOffset}}%;
+        --playing-note-left: {{loop.playingNoteLeft}}%;
+        --note-opacity: {{loop.opacity}};
+        --base-color: {{loop.color}};
+      "
+      data-offset="{{loop.rawOffset}}"
+      data-noteNum="{{loop.playingNoteRaw}}"
+    ></div>
+  {{/each}}
+</div>
+
+<script>
+  import Voice from './Voice.html';
+
+  export default {
+    components: {
+      Voice
+    }
+
+  };
+</script>

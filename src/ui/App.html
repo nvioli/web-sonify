@@ -1,0 +1,51 @@
+<p>
+  This page uses the Google Analytics API to create a realtime, ambient representation of the visitor traffic of your website.
+  Most such dashboards are visual, but I see sound as an underexplored channel for visualizing data
+  (of course we can't call it <em>visual</em>ization anymore, hence <strong>auralization</strong>!)
+  This app is the result of my experimentation around this idea.
+</p>
+<p hidden={{$auth}}>
+  For privacy reasons, you can only auralize data for a site you control
+  (this version is set up to auralize the traffic of <a href="globalgiving.org">GlobalGiving</a>)
+  but I wanted to give you a taste of what it sounds like, so click the "start" button above if you haven't already,
+  and start moving things around (go slowly because some of the options have dramatic -- and sometimes abrasive -- effects)
+</p>
+<p hidden={{$auth}}>
+  The most important controls are "volume" and "note count". Note count controls how many notes are played by this synth in a minute;
+  replacing the Google Analytics data in this demo. The values move randomly by small amounts every minute to provide some variation.
+</p>
+<table>
+  <tr><td colspan=3 style="text-align:center">
+  <h1>{{($auth ? 'GlobalGiving' : 'Demo Mode')}} in {{#if $key.endsWith("m")}}{{$key.substring(0,1)}} Minor{{else}}{{$key}} Major{{/if}}</h1>
+  </td></tr>
+  <tr><td colspan=3 style="text-align:center">
+    <div  hidden={{!$auth}}>
+      <input type="range" id="notesPerVisitor" class="restartOnChange" min=-5 max=10 bind:value=$notesPerVisitor step=1>
+      <label for="notesPerVisitor">{{$notesPerVisitor <= 0 ? `each note represents ${Math.pow(10,1-$notesPerVisitor)} visitors` : `each visitor represented by ${$notesPerVisitor} note${$notesPerVisitor === 1 ? "" : "s"}`}}</label>
+    </div>
+    <input type="checkbox" id="effectsRemoved" bind:checked=$effectsRemoved/><label for="effectsRemoved">remove effects</label>&nbsp;&nbsp;&nbsp;
+  </td></tr>
+
+  <tr id="allSynths">
+    <SynthGroup bind:groupData=$groupA />
+    <SynthGroup bind:groupData=$groupB />
+    <SynthGroup bind:groupData=$groupC />
+  </tr>
+</table>
+<button id="reset">reset</button>
+
+<script>
+  import SynthGroup from './SynthGroup.html';
+
+  export default {
+    components: {
+      SynthGroup
+    },
+
+    methods: {
+      getOscillatorType(voiceData) {
+        return `${voiceData.oscillatorTypePrefix}${voiceData.oscillatorType}${voiceData.oscillatorPartials}`
+      }
+    }
+  };
+</script>

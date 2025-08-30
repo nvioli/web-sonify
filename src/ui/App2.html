@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <link href="/styles.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="grid">
+      <div class="header">
+        <h1>{{($auth ? $siteName : 'WebSonify (Demo Mode)')}} in {{#if $key.endsWith("m")}}{{$key.slice(0,-1)}} Minor{{else}}{{$key}} Major{{/if}}</h1>
+        <button id="start">Start</button>
+        <div class="chromeOnly">(Works best in Chrome)</div>
+        <div class="mobileOnly">(Desktop only, sorry)</div>
+      </div>
+      <SynthGroup bind:groupData=$groupA />
+      <SynthGroup bind:groupData=$groupB />
+      <SynthGroup bind:groupData=$groupC />
+      <div class="footer">
+        <div hidden={{$auth}}>
+          <button id="auth-button">Authorize</button>
+          &nbsp;&nbsp;/&nbsp;&nbsp;
+        </div>
+        <input type="checkbox" bind:checked=$showAbout id="showAbout" style="display:none"/><label for="showAbout" class="link">about</label>
+        <div hidden={{!$auth}} class="verticalCenterChildren">
+          &nbsp;&nbsp;/&nbsp;&nbsp;
+          <div >
+            <input type="checkbox" id="goalDataHidden" bind:checked=$goalDataHidden/><label for="goalDataHidden">hide goals</label>
+          </div>
+          &nbsp;&nbsp;/&nbsp;&nbsp;
+          <div >
+            <input type="range" id="notesPerVisitor" class="restartOnChange" min=-5 max=5 bind:value=$notesPerVisitor step=1>
+            <br/>
+            <label for="notesPerVisitor">{{$notesPerVisitor <= 0 ? `each note represents ${Math.pow(10,1-$notesPerVisitor)} visitors` : `each visitor represented by ${$notesPerVisitor} note${$notesPerVisitor === 1 ? "" : "s"}`}}</label>
+          </div>
+        </div>
+        &nbsp;&nbsp;/&nbsp;&nbsp;
+        <input type="checkbox" id="effectsRemoved" bind:checked=$effectsRemoved /><label for="effectsRemoved" >remove effects</label>
+        &nbsp;&nbsp;/&nbsp;&nbsp;
+        <button id="reset">reset</button>
+        <div class="about" hidden={{!$showAbout}}>
+          <p>
+            WebSonify sonically displays data about the traffic on a connected website. Instead of using a visual dashboard, it composes a "song" representing how many users are meeting your Google Analytics goals, like page views, email signups, or checkouts.
+          </p>
+          <p>
+            Each of the three instruments chosen above plays a single note for every visitor to your website meeting one of the goals assigned to it.
+          </p>
+          <p>
+            In this way, WebSonify creates an ambient aural representation of your site's data. By listening through headphones or playing the song in a public space in your office, you can learn about your site's usage and traffic patterns in real-time.
+          </p>
+          <p>
+            <a href="/slides/">View the presentation</a> / <a href="https://glitch.com/edit/#!/web-sonify">View or remix the code / sonify your own website</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  import SynthGroup from './SynthGroup2.html';
+  
+  export default {
+    components: {
+      SynthGroup
+    },
+
+    methods: {
+      getOscillatorType(voiceData) {
+        return `${voiceData.oscillatorTypePrefix}${voiceData.oscillatorType}${voiceData.oscillatorPartials}`
+      }
+    }
+  };
+</script>

@@ -1,0 +1,49 @@
+<td><table>
+  <tr><td colspan=2 style="text-align:center"><strong>{{voiceData.voice}}</strong></td></tr>
+  <tr>
+    <td>Osc. Type:</td>
+    <td>
+      <select bind:value=voiceData.oscillatorType>
+        <option>sine</option>
+        <option>square</option>
+        <option>triangle</option>
+        <option>sawtooth</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>Osc. Subtype:</td>
+    <td>
+      <select bind:value=voiceData.oscillatorTypePrefix>
+        <option></option>
+        <option>fm</option>
+        <option>am</option>
+        <option>fat</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>Osc. Partials</td>
+    <td><input type="range" min="2" max="32" bind:value=voiceData.oscillatorPartials step="1" style="width:120px">{{voiceData.oscillatorPartials}}</td>
+  </tr>
+  <tr hidden={{voiceData.oscillatorTypePrefix !== "am"}}>
+    <td>Modulation Type:</td>
+    <td>
+      <select bind:value=voiceData.modulationType>
+        <option>sine</option>
+        <option>square</option>
+        <option>triangle</option>
+        <option>sawtooth</option>
+      </select>
+    </td>
+  </tr>
+  <tr hidden={{voiceData.oscillatorTypePrefix !== "fm"}}>
+    <td>FM Modulation Index</td>
+    <td><input type="range" min="1" max="100" step="1" bind:value=voiceData.modulationIndex  >{{voiceData.modulationIndex}}</td>
+  </tr>
+  <tr hidden={{voiceData.oscillatorTypePrefix !== "am" && voiceData.oscillatorTypePrefix !== "fm"}}>
+    <td>Harmonicity</td>
+    <td><input type="range" min="-12" max="24" step="0.1" bind:value=voiceData.harmonicity  >{{voiceData.harmonicity}}</td>
+  </tr>
+  <tr><td colspan=2><input class="synthControl" type="checkbox" id="{{group}}{{voiceData.voice}}Mute" bind:checked=voiceData.mute/><label for="{{group}}{{voiceData.voice}}Mute">mute</label></td></tr>
+  </table></td>

@@ -1,0 +1,34 @@
+{
+  "name": "ga-audiovis",
+  "version": "0.0.1",
+  "description": "Google analytics audio visualization",
+  "main": "server.js",
+  "scripts": {
+    "start": "webpack && node server.js"
+  },
+  "devDependencies": {
+    "webpack": "^2.6.1",
+    "svelte-loader": "2.2.1",
+    "uglifyjs-webpack-plugin": "^1.2.3"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "google-client-api": "^1.0.4",
+    "svelte": "^1.60.2",
+    "tone": "0.11.11",
+    "startaudiocontext": "^1.2.1",
+    "audiobuffer-to-wav": "^1.0.0"
+  },
+  "engines": {
+    "node": "20.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/welcome-project"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
